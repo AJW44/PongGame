@@ -1,8 +1,13 @@
+import java.awt.Color;
+import java.awt.Rectangle;
 
 public class Sprite {
 	private int xPosition, yPosition;
 	private int xVelocity, yVelocity;
 	private int width, height;
+	private int initialXPosition, initialYPosition;
+	private Color colour;
+	
 	
 	public int getXPosition() { return xPosition; }
 	public int getYPosition() { return yPosition; }
@@ -10,16 +15,15 @@ public class Sprite {
 	public int getYVelocity() { return yVelocity; }
 	public int getWidth() { return width; }
 	public int getHeight() {return height; }
+	public Color getColour() { return colour; }
 	
-	private int initialXPosition, initialYPosition;
-	public void setInitialPosition(int initialX, int initialY) {
-		initialXPosition = initialX;
-		initialYPosition = initialY;
+	
+	public void setXPosition(int newX) {
+		xPosition = newX;
 	}
-	public void resetToInitialPosition() {
-		setXPosition(initialXPosition);
-		setYPosition(initialYPosition);
-	}		
+	public void setYPosition(int newY) {
+		yPosition = newY;
+	}
 	
 	public void setXPosition (int newX, int panelWidth) {
 		xPosition = newX;
@@ -37,12 +41,6 @@ public class Sprite {
 			yPosition = panelHeight - height;
 		}
 	}
-	private void setXPosition(int newX) {
-		xPosition = newX;
-	}
-	private void setYPosition(int newY) {
-		yPosition = newY;
-	}
 	public void setXVelocity (int newXVelocity) {
 		xVelocity = newXVelocity;
 	}
@@ -55,13 +53,21 @@ public class Sprite {
 	public void setHeight (int newHeight) {
 		height = newHeight;
 	}
-	
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public void setColor (Color color) {
+		colour = color;
 	}
-
+	public void setInitialPosition(int initialX, int initialY) {
+		initialXPosition = initialX;
+		initialYPosition = initialY;
+	}
+	public void resetToInitialPosition() {
+		setXPosition(initialXPosition);
+		setYPosition(initialYPosition);
+	}
+	public Rectangle getRectangle() {return new Rectangle(getXPosition(), getYPosition(), getWidth(), getHeight()); }
+	
 }
+
+	
+	
+
